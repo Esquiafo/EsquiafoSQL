@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-import static org.springframework.http.ResponseEntity.ok;
-
 import java.util.List;
 
 @RestController
@@ -26,16 +24,33 @@ public class ProductController {
     }
     @GetMapping("/products")
     public List<Product> getAllProduct(){
+
         return productService.getAllProduct();
     }
 
-    @GetMapping("products/{id}")
-    public ResponseEntity<Product> getById(@PathVariable int id) {
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getAProduct(@PathVariable int id) {
         Optional<Product> user = productService.getById(id);
         if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
         } else {
             throw new  RecordNotFoundException();
         }
+    }
+    @PutMapping("/update")
+    public ResponseEntity<Product> updateProduct(@RequestBody final Product product) {
+        Product products = productService.saveProduct(product);
+        if (products == null) {
+            throw new ServerException();
+        }
+        else {
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        }
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteProduct(){
+
+        productService.deletedAll();
+        return ResponseEntity.ok().build();
     }
 }

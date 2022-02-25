@@ -3,6 +3,7 @@ package com.esquiafo.productsystem.repository.service;
 import com.esquiafo.productsystem.model.Product;
 import com.esquiafo.productsystem.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
     public Optional<Product> getById(int id){
       return  productRepository.findById(id);
     }
+    @Override
+    public void deletedAll() {
+        productRepository.deleteAllInBatch();
+    }
+
 
 
 

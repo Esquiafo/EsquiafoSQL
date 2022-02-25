@@ -6,12 +6,17 @@ import javax.persistence.Id;
 @Entity
 public class Product {
     @Id
+<<<<<<< Updated upstream
     private long  id;
+=======
+
+    private int id;
+>>>>>>> Stashed changes
     private String name;
     private String address;
 
     public Product(){}
-    public Product(long id, String name, String address){
+    public Product(int id, String name, String address){
         this.id= id;
         this.name= name;
         this.address= address;
@@ -21,7 +26,7 @@ public class Product {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
