@@ -14,7 +14,7 @@ public class Product {
     private String address;
 
     public Product(){}
-    public Product(int id, String name, String address){
+    public Product(long id, String name, String address){
         this.id= id;
         this.name= name;
         this.address= address;
@@ -24,7 +24,7 @@ public class Product {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
