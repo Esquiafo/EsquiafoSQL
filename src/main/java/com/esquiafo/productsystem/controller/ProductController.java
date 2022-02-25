@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("products/{id}")
-    public ResponseEntity<Product> getById(@PathVariable int id) {
+    public ResponseEntity<Product> getById(@PathVariable long id) {
         Optional<Product> user = productService.getById(id);
         if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
